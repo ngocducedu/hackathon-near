@@ -294,6 +294,21 @@ function Profile() {
         }
     }
     
+
+    async function handleRegisToken() {
+        if (window.walletConnection.isSignedIn()) {
+            await window.contractFT.storage_deposit(
+                {
+                    account_id: window.accountId,
+                },
+                30000000000000,
+                utils.format.parseNearAmount("0.01")
+            )
+        } else {
+            login();
+        }
+    }
+
     return (
         <div>
             <PageHeader
@@ -301,7 +316,8 @@ function Profile() {
                 title="My Collectibles"
                 extra={[
                     <Button onClick={handleClickMint} key="3">Mint DRAGON NOW!</Button>,
-                    <Button onClick={handleDeposit} key="4">Deposit Storage</Button>
+                    <Button onClick={handleDeposit} key="4">Deposit Storage</Button>,
+                    <Button onClick={handleRegisToken} key="5">Register UPDRA Token</Button>
                 ]}
             />
 
