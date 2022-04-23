@@ -12,7 +12,7 @@ function ModalTransferNFT(props) {
     return (
         <Modal title="Transfer NFT" visible={props.visible} onOk={handleOk} onCancel={props.handleCancel}>
             <h2>Transfer to:</h2>
-            <Input onChange={(e) => setAccountId(e.target.value)} placeholder={"ex: vbidev.testnet ..."} size="large" prefix={<UserOutlined />} />
+            <Input onChange={(e) => setAccountId(e.target.value)} placeholder={"ex: nearspring.testnet ..."} size="large" prefix={<UserOutlined />} />
         </Modal>
     )
 }

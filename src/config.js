@@ -1,22 +1,11 @@
-const NFT_CONTRACT_NAME = process.env.NFT_CONTRACT_NAME ||'16nft-up-dragon.ngocduct.testnet'
-const MARKET_CONTRACT_NAME = process.env.MARKET_CONTRACT_NAME || '16market-up-dragon.ngocduct.testnet'
+const NFT_CONTRACT_NAME = process.env.NFT_CONTRACT_NAME ||'nft-dragon-nearspring-hackathon.louiskate.testnet'
+const MARKET_CONTRACT_NAME = process.env.MARKET_CONTRACT_NAME || 'market-nft-dragon-nearspring.louiskate.testnet'
 const FT_CONTRACT_NAME = process.env.FT_CONTRACT_NAME || '16updragon-token.ngocduct.testnet'
 
 function getConfig(env) {
   switch (env) {
 
   case 'production':
-  case 'mainnet':
-    return {
-      networkId: 'mainnet',
-      nodeUrl: 'https://rpc.mainnet.near.org',
-      nftContractName: NFT_CONTRACT_NAME,
-      marketContractName: MARKET_CONTRACT_NAME,
-      ftContractName: FT_CONTRACT_NAME,
-      walletUrl: 'https://wallet.near.org',
-      helperUrl: 'https://helper.mainnet.near.org',
-      explorerUrl: 'https://explorer.mainnet.near.org',
-    }
   case 'development':
   case 'testnet':
     return {
@@ -30,6 +19,18 @@ function getConfig(env) {
       explorerUrl: 'https://explorer.testnet.near.org',
       imgs
     }
+  case 'mainnet':
+    return {
+      networkId: 'mainnet',
+      nodeUrl: 'https://rpc.mainnet.near.org',
+      nftContractName: NFT_CONTRACT_NAME,
+      marketContractName: MARKET_CONTRACT_NAME,
+      ftContractName: FT_CONTRACT_NAME,
+      walletUrl: 'https://wallet.near.org',
+      helperUrl: 'https://helper.mainnet.near.org',
+      explorerUrl: 'https://explorer.mainnet.near.org',
+    }
+
   case 'betanet':
     return {
       networkId: 'betanet',

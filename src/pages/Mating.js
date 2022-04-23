@@ -13,7 +13,11 @@ import {baseDecode} from "borsh";
 import getConfig from '../config'
 import { Progress, Space,Radio, Row, Input,Col } from 'antd';
 import { Link } from 'react-router-dom'
-
+import element0 from '../assets/element0.png';
+import element1 from '../assets/element1.png';
+import element2 from '../assets/element2.png';
+import element3 from '../assets/element3.png';
+const element = [element0,element1,element2,element3]
 const nearConfig = getConfig(process.env.NODE_ENV || 'development')
 const { Meta } = Card;
 
@@ -336,7 +340,7 @@ function Mating() {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                 Dragon Đực
+                 Male Dragon
                 <div style={{ padding: 30, display: "flex"}}>
                     {console.log("nfts", nfts)}
                     <Radio.Group onChange={onCheckMale} value={1}>
@@ -349,11 +353,11 @@ function Mating() {
                                             <Radio value={nft.token_id}>
                                                 <Card>
                                                     {stars[nft.metadata.quality-1]}<br/>
-                                                    
-                                                    <BugOutlined /> Thế hệ Gen thứ: {nft.metadata.generation} <br/>
-                                                    <GroupOutlined /> Mã Gen: {nft.metadata.gen} <br/>
-                                                    <Meta title={`${"ID: " + nft.token_id} (${nft.approved_account_ids[nearConfig.marketContractName] >= 0 ? "SALE" : "NOT SALE"})`} description={"Chủ nhân: " + nft.owner_id} />      
-                                                    Giống: {nft.metadata.sex ? "Đực": "Cái"} <br/> 
+                                                    <img src={element[nft.metadata.element]} style={{width:"20px"}} alt="Element" /> <br/>
+                                                    <BugOutlined /> Gen Generation : {nft.metadata.generation} <br/>
+                                                    <GroupOutlined /> Gene Code: {nft.metadata.gen} <br/>
+                                                    <Meta title={`${"ID: " + nft.token_id} (${nft.approved_account_ids[nearConfig.marketContractName] >= 0 ? "SALE" : "NOT SALE"})`} description={"Owner: " + nft.owner_id} />      
+                                                    Sex: {nft.metadata.sex ? "Male": "Female"} <br/> 
                                                     
                                                 </Card>    
                                             </Radio>
@@ -373,7 +377,7 @@ function Mating() {
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                Dragon Cái
+                Female Dragon
                 <div style={{ padding: 30, display: "flex"}}>
                     {console.log("nfts", nfts)}
                     <Radio.Group onChange={onCheckFemale} value={2}>
@@ -385,11 +389,11 @@ function Mating() {
                                             <Radio value={nft.token_id}>
                                                 <Card>
                                                     {stars[nft.metadata.quality-1]}<br/>
-                                                    
-                                                    <BugOutlined /> Thế hệ Gen thứ: {nft.metadata.generation} <br/>
-                                                    <GroupOutlined /> Mã Gen: {nft.metadata.gen} <br/>
-                                                    <Meta title={`${"ID: " + nft.token_id} (${nft.approved_account_ids[nearConfig.marketContractName] >= 0 ? "SALE" : "NOT SALE"})`} description={"Chủ nhân: " + nft.owner_id} />      
-                                                    Giống: {nft.metadata.sex ? "Đực": "Cái"} <br/> 
+                                                    <img src={element[nft.metadata.element]} style={{width:"20px"}} alt="Element" /> <br/>
+                                                    <BugOutlined /> Gen Generation : {nft.metadata.generation} <br/>
+                                                    <GroupOutlined /> Gene Code: {nft.metadata.gen} <br/>
+                                                    <Meta title={`${"ID: " + nft.token_id} (${nft.approved_account_ids[nearConfig.marketContractName] >= 0 ? "SALE" : "NOT SALE"})`} description={"Owner: " + nft.owner_id} />      
+                                                    Sex: {nft.metadata.sex ? "Male": "Female"} <br/> 
                                                     
                                                 </Card>    
                                             </Radio>
@@ -405,15 +409,15 @@ function Mating() {
             <Col span={8}>
                 <div style={{ padding: 5, fontSize: 20}}>
                     <br/><br/><br/><br/><br/>      
-                        ID Đực là: {male} <br/><br/>
+                        Male ID is: {male} <br/><br/>
                     <HeartOutlined /><HeartOutlined /><HeartOutlined /><HeartOutlined />
                     <br/><br/>
-                        ID Cái là: {female} <br/><br/>
+                        Female ID is: {female} <br/><br/>
                     <Button
                         danger
                         onClick={() => matingDragon(male, female)}
                     >
-                        Lai Tạo
+                        Hybridization
                     </Button>
                 </div>
             </Col>

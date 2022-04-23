@@ -6,9 +6,9 @@ import { login, logout } from './utils'
 import Routes from "./routes";
 import './global.css'
 import { Layout, Menu, Button, Dropdown } from 'antd';
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
-import "./global.css";
+
+import { MailOutlined, AppstoreOutlined, SettingOutlined, UserOutlined, VideoCameraOutlined  } from '@ant-design/icons';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -29,54 +29,47 @@ export default function App() {
 
   return (
       <Layout style={{minHeight: '100vh'}}>
-          <Sider
-              breakpoint="lg"
-              collapsedWidth="0"
-              onBreakpoint={broken => {
-                  console.log(broken);
-              }}
-              onCollapse={(collapsed, type) => {
-                  console.log(collapsed, type);
-              }}
-          >
-              <div className="logo" />
-              <Menu theme="dark" mode="inline" defaultSelectedKeys={[location.pathname]}>
-                  <Menu.Item key="/" icon={<VideoCameraOutlined />}>
-                      <Link to={"/"}> Chợ </Link>
-                  </Menu.Item>
-                  <Menu.Item key="/auctions" icon={<VideoCameraOutlined />}>
-                      <Link to={"/auctions"}> Đấu Giá </Link>
-                  </Menu.Item>
-                  <Menu.Item key="/mating" icon={<UserOutlined />}>
-                      <Link to={"/mating"}> Lai Tạo Dragon </Link>
-                  </Menu.Item>
-                  <Menu.Item key="/profile" icon={<UserOutlined />}>
-                      <Link to={"/profile"}> Bộ Sưu Tập </Link>
-                  </Menu.Item>
-                  
-              </Menu>
-          </Sider>
           <Layout>
-              <Header className="site-layout-sub-header-background" style={{padding: 15}} >
-                  <div></div>
-                  {
-                      window.walletConnection.isSignedIn() ?
-                          <Dropdown overlay={menu} placement="bottomLeft" arrow>
-                              <Button type="primary" shape="round" icon={<UserOutlined />}>
-                                  { window.accountId }
-                              </Button>
-                          </Dropdown>:
-                          <Button onClick={login} type="primary" shape="round" icon={<UserOutlined />}>
-                              Login
-                          </Button>
-                  }
-              </Header>
+                
+                <div className='menu'>    
+                    <a href="/mint">
+                        <img className="logo" src={require('./assets/logo.png')} alt="Logo" />    
+                    </a>           
+                    <div className='list-item'>
+                        <ul className='menu-item font-bold'>
+                            <li className='list-item-li'>
+                                <Link to={"/"} className="text-white"> My DRAGONS </Link>
+                            </li>
+                            <li className='list-item-li'>
+                                <Link to={"/mint"} className="text-white"> Get DRAGON </Link>
+                            </li>
+                            <li>
+                            <Link to={"/mating"} className="text-white"> Breed </Link>
+                            </li>
+                        </ul>
+                    </div> 
+
+                    <div >
+                        {
+                            window.walletConnection.isSignedIn() ?
+                                <Dropdown overlay={menu} placement="bottomLeft" arrow>
+                                    <Button className='login' type="primary" shape="round" icon={<UserOutlined />}>
+                                        { window.accountId }
+                                    </Button>
+                                </Dropdown>:
+                                <Button className='login' onClick={login} type="primary" shape="round" icon={<UserOutlined />}>
+                                    Login
+                                </Button>
+                        }
+                    </div>
+                                
+                </div>  
               <Content style={{ margin: '24px 16px 0' }}>
                   <div className="site-layout-background" style={{ paddingBottom: 24, paddingTop: 24, minHeight: 360 }}>
                       <Routes/>
                   </div>
               </Content>
-              <Footer style={{ textAlign: 'center' }}>UP DRAGON</Footer>
+              <Footer style={{ textAlign: 'center' }}>NFT DRAGON NEARSPRING</Footer>
           </Layout>
       </Layout>
   )

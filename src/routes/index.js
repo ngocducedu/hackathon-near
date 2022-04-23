@@ -10,16 +10,17 @@ import Auctions from "../pages/Auctions";
 import Profile from "../pages/Profile";
 import Detail from "../pages/Detail";
 import Mating from "../pages/Mating";
+import Mint from "../pages/Mint";
 
 function Router() {
     return (
         <Routes>
-            <Route path="/" element={<MarketPlace />} />
+            <Route path="/" element={<Profile />} />
             <Route path="/auctions" element={<Auctions />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/mating" element={<Mating />} />
             <Route path="/detail/:id" element={<Detail />} />
-            
+            <Route path="/mint" element={<Mint />} />
         </Routes>
     )
 }

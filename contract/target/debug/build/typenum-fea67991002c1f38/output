@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=e:\Khoa hoc BLockchain\FrontEnd_Blockchain\HackathonSpringNear\Week2\nft-nearspring-hackathon\contract\target\debug\build\typenum-fea67991002c1f38\out\consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=e:\Khoa hoc BLockchain\FrontEnd_Blockchain\HackathonSpringNear\Week2\nft-nearspring-hackathon\contract\target\debug\build\typenum-fea67991002c1f38\out\op.rs

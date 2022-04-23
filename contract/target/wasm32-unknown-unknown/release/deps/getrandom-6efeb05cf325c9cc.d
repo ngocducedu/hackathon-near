@@ -1,0 +1,10 @@
+E:\Khoa hoc BLockchain\RustLearning\rust-blockchain\nft-marketplace-tutorial-3.FT-payout\nft-contract\target\wasm32-unknown-unknown\release\deps\getrandom-6efeb05cf325c9cc.rmeta: C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.2.5\src\lib.rs C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.2.5\src\error.rs C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.2.5\src\util.rs C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.2.5\src\error_impls.rs
+
+E:\Khoa hoc BLockchain\RustLearning\rust-blockchain\nft-marketplace-tutorial-3.FT-payout\nft-contract\target\wasm32-unknown-unknown\release\deps\libgetrandom-6efeb05cf325c9cc.rlib: C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.2.5\src\lib.rs C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.2.5\src\error.rs C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.2.5\src\util.rs C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.2.5\src\error_impls.rs
+
+E:\Khoa hoc BLockchain\RustLearning\rust-blockchain\nft-marketplace-tutorial-3.FT-payout\nft-contract\target\wasm32-unknown-unknown\release\deps\getrandom-6efeb05cf325c9cc.d: C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.2.5\src\lib.rs C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.2.5\src\error.rs C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.2.5\src\util.rs C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.2.5\src\error_impls.rs
+
+C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.2.5\src\lib.rs:
+C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.2.5\src\error.rs:
+C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.2.5\src\util.rs:
+C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.2.5\src\error_impls.rs:

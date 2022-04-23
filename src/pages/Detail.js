@@ -15,7 +15,10 @@ import { Progress, } from 'antd';
 import 'antd/dist/antd.css';
 import { useParams, Route } from 'react-router-dom';
 import { Row, Col } from 'antd';
-
+import element0 from '../assets/element0.png';
+import element1 from '../assets/element1.png';
+import element2 from '../assets/element2.png';
+import element3 from '../assets/element3.png';
 import { EditOutlined, SettingOutlined } from '@ant-design/icons';
 
 const gridStyle = {
@@ -25,7 +28,7 @@ const gridStyle = {
 
 const nearConfig = getConfig(process.env.NODE_ENV || 'development')
 const { Meta } = Card;
-
+const element = [element0,element1,element2,element3]
 function Detail() {
     const [nft, setNFT] = useState({
         owner_id: null,
@@ -506,24 +509,25 @@ function Detail() {
                                     index < nft.metadata.quality ? stars[index] = <StarFilled key={index} style={{color:"#ff9e0d"}}/> : item
                                 })
                             }
-                            <Card>Độ hiếm: {stars} </Card>
-                            Sinh lực:<Progress percent={nft.metadata.blood/nft.metadata.blood*100}  strokeColor="red"/>
-                            <BugOutlined /> Thế hệ Gen thứ: {nft.metadata.generation} <br/>
-                            <GroupOutlined /> Mã Gen: {nft.metadata.gen} <br/>
-                            <ThunderboltFilled /> Sức mạnh: {nft.metadata.power} <br/>
-                            <ThunderboltFilled /> Chí mạng: {nft.metadata.strike}% <br/>
-                            Thể chất:<Progress percent={nft.metadata.physical/nft.metadata.physical*100}  strokeColor="CornflowerBlue"/>
+                            <Card>Rarity: {stars} </Card>
+                            Health :<Progress percent={nft.metadata.blood/nft.metadata.blood*100}  strokeColor="red"/>
+                            <img src={element[nft.metadata.element]} style={{width:"20px"}} alt="Element" /> <br/>
+                            <BugOutlined /> Gen Generation : {nft.metadata.generation} <br/>
+                            <GroupOutlined /> Gene Code: {nft.metadata.gen} <br/>
+                            <ThunderboltFilled /> Damage: {nft.metadata.power} <br/>
+                            <ThunderboltFilled /> Critical  Damage: {nft.metadata.strike}% <br/>
+                            Physical:<Progress percent={nft.metadata.physical/nft.metadata.physical*100}  strokeColor="CornflowerBlue"/>
         
                             {
                                 hungry.map((item, index) => {
                                     index < Math.floor((new Date().getTime() - nft.metadata.time_born ) / 300000  - nft.metadata.feeding_times) ? hungry[index] = <FrownOutlined style={{color:"rgb(225 14 149)"}}/> : item
                                 })
                             }
-                            Đói: {hungry} <br/> <br/>
-                            Giống: {nft.metadata.sex ? "Đực": "Cái"} <br/> 
+                            Hungry: {hungry} <br/> <br/>
+                            Sex: {nft.metadata.sex ? "Male": "Female"} <br/> 
                             <br/>
                             
-                            <Meta title={`${"ID: " + nft.token_id} (${nft.approved_account_ids[nearConfig.marketContractName] >= 0 ? "SALE" : "NOT SALE"})`} description={"Chủ nhân: " + nft.owner_id} />
+                            <Meta title={`${"ID: " + nft.token_id} (${nft.approved_account_ids[nearConfig.marketContractName] >= 0 ? "SALE" : "NOT SALE"})`} description={"Owner: " + nft.owner_id} />
                         </Card>
         
                     </div>
@@ -534,9 +538,9 @@ function Detail() {
                 </Col>
 
                 <Col span={16}>
-                    <Card title="Rất tiếc Dragon của bạn đã chết">
+                    <Card title="Sorry your Dragon is dead">
                         <Card.Grid span={6} style={gridStyle}>
-                            Vật phẩm hồi sinh 
+                            Resurrection Item 
                             <Button
                                 danger
                                 onClick={() => setRandomFightOne(nft.token_id)}
@@ -545,7 +549,7 @@ function Detail() {
                             </Button>
                         </Card.Grid>
                         <Card.Grid span={6} style={gridStyle}>
-                            Vật phẩm hồi sinh 
+                            Resurrection Item 
                             <Button
                                 danger
                                 onClick={() => setRandomFightOne(nft.token_id)}
@@ -553,7 +557,7 @@ function Detail() {
                                 Buy
                             </Button>
                         </Card.Grid><Card.Grid span={6} style={gridStyle}>
-                            Vật phẩm hồi sinh 
+                            Resurrection Item 
                             <Button
                                 danger
                                 onClick={() => setRandomFightOne(nft.token_id)}
@@ -587,7 +591,7 @@ function Detail() {
                                 key={nft.token_id}
                                 hoverable
                                 style={{ width: 240, marginRight: 15, marginBottom: 15 }}
-                                cover={<img style={{height: 200, width: "100%", objectFit: "contain"}} alt="nft-cover" src={nearConfig.imgs[nft.metadata.quality]} />}
+                                cover={<img style={{height: 200, width: "100%", objectFit: "contain"}} alt="nft-cover" src={nft.metadata.media} />}
                                 actions={[
                                     <SendOutlined onClick={() => handleTransferToken(nft)} key={"send"}/>,
                                     <DollarCircleOutlined onClick={() => handleSaleToken(nft)} key={"sell"} />,
@@ -601,24 +605,25 @@ function Detail() {
                                         index < nft.metadata.quality ? stars[index] = <StarFilled key={index} style={{color:"#ff9e0d"}}/> : item
                                     })
                                 }
-                                <Card>Độ hiếm: {stars} </Card>
-                                Sinh lực:<Progress percent={nft.metadata.blood/nft.metadata.blood*100}  strokeColor="red"/>
-                                <BugOutlined /> Thế hệ Gen thứ: {nft.metadata.generation} <br/>
-                                <GroupOutlined /> Mã Gen: {nft.metadata.gen} <br/>
-                                <ThunderboltFilled /> Sức mạnh: {nft.metadata.power} <br/>
-                                <ThunderboltFilled /> Chí mạng: {nft.metadata.strike}% <br/>
-                                Thể chất:<Progress percent={nft.metadata.physical/nft.metadata.physical*100}  strokeColor="CornflowerBlue"/>
+                                <Card>Rarity: {stars} </Card>
+                                Health :<Progress percent={nft.metadata.blood/nft.metadata.blood*100}  strokeColor="red"/>
+                                <img src={element[nft.metadata.element]} style={{width:"20px"}} alt="Element" /> <br/>
+                                <BugOutlined /> Gen Generation : {nft.metadata.generation} <br/>
+                                <GroupOutlined /> Gene Code: {nft.metadata.gen} <br/>
+                                <ThunderboltFilled /> Damage: {nft.metadata.power} <br/>
+                                <ThunderboltFilled /> Critical  Damage: {nft.metadata.strike}% <br/>
+                                Physical:<Progress percent={nft.metadata.physical/nft.metadata.physical*100}  strokeColor="CornflowerBlue"/>
             
                                 {
                                     hungry.map((item, index) => {
                                         index < Math.floor((new Date().getTime() - nft.metadata.time_born ) / 300000  - nft.metadata.feeding_times) ? hungry[index] = <FrownOutlined style={{color:"rgb(225 14 149)"}}/> : item
                                     })
                                 }
-                                Đói: {hungry} <br/> <br/>
-                                Giống: {nft.metadata.sex ? "Đực": "Cái"} <br/> 
+                                Hungry: {hungry} <br/> <br/>
+                                Sex: {nft.metadata.sex ? "Male": "Female"} <br/> 
                                 <br/>
                                 
-                                <Meta title={`${"ID: " + nft.token_id} (${nft.approved_account_ids[nearConfig.marketContractName] >= 0 ? "SALE" : "NOT SALE"})`} description={"Chủ nhân: " + nft.owner_id} />
+                                <Meta title={`${"ID: " + nft.token_id} (${nft.approved_account_ids[nearConfig.marketContractName] >= 0 ? "SALE" : "NOT SALE"})`} description={"Owner: " + nft.owner_id} />
                             </Card>
         
                         </div>
@@ -629,13 +634,13 @@ function Detail() {
                     </Col>
 
                     <Col span={16}>
-                        <Card title="Khiêu Chiến Quái Thú">
+                        <Card title="Battle with the Monster">
                             <Card.Grid style={gridStyle} >
-                                Kết quả lượt khiêu chiến trước:
+                                Result of previous Battle
                                 {nft.metadata.result_last_fight == '1' ? winFight : loseFight}
                             </Card.Grid>
                             <Card.Grid style={gridStyle} >
-                                <Card>Độ Khó Bình Thường: <br/> <StarFilled  style={{color:"#ff9e0d"}}/><StarFilled /><StarFilled /><br/> 
+                                <Card>Normal Difficulty: <br/> <StarFilled  style={{color:"#ff9e0d"}}/><StarFilled /><StarFilled /><br/> 
                                     <Button
                                         danger
                                         onClick={() => setRandomFightOne(nft.token_id)}
@@ -645,7 +650,7 @@ function Detail() {
                                 </Card>
                             </Card.Grid>
                             <Card.Grid style={gridStyle} >
-                                <Card>Độ Khó Cao Cấp: <br/><StarFilled  style={{color:"#ff9e0d"}}/>
+                                <Card>Advanced Difficulty: <br/><StarFilled  style={{color:"#ff9e0d"}}/>
                                 <StarFilled  style={{color:"#ff9e0d"}}/><StarFilled /><br/> 
                                     <Button
                                         danger
@@ -656,7 +661,7 @@ function Detail() {
                                 </Card>
                             </Card.Grid>
                             <Card.Grid style={gridStyle} >
-                                <Card>Độ Khó Địa Ngục: <br/> <StarFilled  style={{color:"#ff9e0d"}}/>
+                                <Card>Hell Difficulty: <br/> <StarFilled  style={{color:"#ff9e0d"}}/>
                                 <StarFilled  style={{color:"#ff9e0d"}}/><StarFilled  style={{color:"#ff9e0d"}}/><br/> 
                                     <Button
                                         danger
@@ -668,44 +673,44 @@ function Detail() {
                             </Card.Grid>
                             
                         </Card>,     
-                        Người chơi được đánh 3 lượt mỗi ngày: <br/>
-                        * Độ khó  <StarFilled  style={{color:"#ff9e0d"}}/>: Tỷ lệ thắng 80% --- Win: Lượng Token nhận được = 1 Token + % bonus Token (level + độ hiếm)   --- Lose: Nhận 0.5 Token
+                        Players are allowed to play 3 times per day: <br/>
+                        * Level of difficult  <StarFilled  style={{color:"#ff9e0d"}}/>: Win rate 80% --- Win: Amount of Tokens received = 1 Token + % bonus Token (level + rarity)   --- Lose: Get 0.5 Token
                         <br/>
-                        * Độ khó  <StarFilled  style={{color:"#ff9e0d"}}/><StarFilled  style={{color:"#ff9e0d"}}/><StarFilled />: Tỷ lệ thắng 60%   --- Win: Lượng Token nhận được = 3 Token + % bonus Token  (level +  độ hiếm)   --- Lose: Nhận 0.5 Token
+                        * Level of difficult  <StarFilled  style={{color:"#ff9e0d"}}/><StarFilled  style={{color:"#ff9e0d"}}/><StarFilled />: Win rate 60%   --- Win: Amount of Tokens received = 3 Token + % bonus Token  (level +  rarity)   --- Lose: Get 0.5 Token
                         <br/>
-                        * Độ khó  <StarFilled  style={{color:"#ff9e0d"}}/><StarFilled  style={{color:"#ff9e0d"}}/><StarFilled  style={{color:"#ff9e0d"}}/>: Tỷ lệ thắng 20% --- Win: Lượng Token nhận được = 6 Token + % bonus Token  (level +  độ hiếm)   --- Lose: Nhận 0.5 Token         
+                        * Level of difficult  <StarFilled  style={{color:"#ff9e0d"}}/><StarFilled  style={{color:"#ff9e0d"}}/><StarFilled  style={{color:"#ff9e0d"}}/>: Win rate 20% --- Win: Amount of Tokens received = 6 Token + % bonus Token  (level +  rarity)   --- Lose: Get 0.5 Token         
                         <br/> 
-                        * Exp nhận được 20 + 20 * level Dragon 
+                        * Exp received 20 + 20 * level Dragon 
                         <br/> <br/> <br/> 
 
                         
-                        <Card title="Nuôi dưỡng Dragon">
+                        <Card title="Nurturing the Dragon">
                             <Card.Grid style={gridStyle} >
-                                Đùi Gà Hảo Hạng
+                                Premium Chicken Thighs
                                 {chicken}
                                 <Button
                                     danger
                                     onClick={() => feedingDragon(nft.token_id,nft.metadata.live)}
                                 >
-                                    Cho ăn
+                                    Feeding
                                 </Button>
                             </Card.Grid>
                             <Card.Grid style={gridStyle} >
-                                Bắp Bò Mỹ
+                                American Beef Cabbage
                                 {crowd}
                                 <Button
                                     danger
                                     onClick={() => feedingDragon(nft.token_id,nft.metadata.live)}
                                 >
-                                    Cho ăn
+                                    Feeding
                                 </Button>
                             </Card.Grid>
                             
                         </Card>,     
-                        Sau mỗi 8h độ đói của Dragon sẽ tăng lên 1: <br/>
+                        After every 8 hours, Dragon's hunger will increase to 1: <br/>
                         <br/>
                         ** +10 Exp + bonus % Exp theo Level <br/>
-                        ** (CHÚ Ý) Độ đói > 4 . Dragon sẽ chết
+                        ** (NOTE) Hunger more than 4 . Dragon will die
                     </Col>
 
 

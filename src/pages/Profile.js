@@ -14,11 +14,16 @@ import {baseDecode} from "borsh";
 import getConfig from '../config'
 import { Progress,Row, Col } from 'antd';
 import { Link } from 'react-router-dom'
+import element0 from '../assets/element0.png';
+import element1 from '../assets/element1.png';
+import element2 from '../assets/element2.png';
+import element3 from '../assets/element3.png';
 
 const nearConfig = getConfig(process.env.NODE_ENV || 'development')
 const { Meta } = Card;
 
 function Profile() {
+    const element = [element0,element1,element2,element3]
    const stars = [[<StarFilled style={{color:"#ff9e0d"}}/>,<StarFilled />,<StarFilled />,<StarFilled />,<StarFilled />]
     ,[<StarFilled  style={{color:"#ff9e0d"}}/>,<StarFilled  style={{color:"#ff9e0d"}}/>,<StarFilled />,<StarFilled />,<StarFilled />]
    ,[<StarFilled  style={{color:"#ff9e0d"}}/>,<StarFilled  style={{color:"#ff9e0d"}}/>,<StarFilled  style={{color:"#ff9e0d"}}/>,<StarFilled />,<StarFilled />]
@@ -315,9 +320,8 @@ function Profile() {
                 className="site-page-header"
                 title="My Collectibles"
                 extra={[
-                    <Button onClick={handleClickMint} key="3">Mint DRAGON NOW!</Button>,
                     <Button onClick={handleDeposit} key="4">Deposit Storage</Button>,
-                    <Button onClick={handleRegisToken} key="5">Register UPDRA Token</Button>
+                    <Button onClick={handleRegisToken} key="5">Register UDRA Token</Button>
                 ]}
             />
 
@@ -328,7 +332,7 @@ function Profile() {
                         nfts.map((nft) => {
                             if (nft.metadata.sex == "1") {
                                 // check xem dragon die
-                                if (Math.floor((new Date().getTime() - nft.metadata.time_born ) / 300000  - nft.metadata.feeding_times) > 4) {
+                                if (Math.floor((new Date().getTime() - nft.metadata.time_born ) / 28800000  - nft.metadata.feeding_times) > 4) {
                                     return (
                                         <Link to={"/detail/"+nft.token_id}>
                                             <Card
@@ -345,19 +349,21 @@ function Profile() {
                                                 <div style={{ fontSize: '30px', textDecorationLine: 'underline' }} >Death</div> <br/>
                                                 <div style={{ fontSize: '20px' }}> <CrownFilled /> Level: {Math.floor(Math.log2(nft.metadata.exp/50)) < 0 ? 0 : Math.floor(Math.log2(nft.metadata.exp/50)) +1 } </div>
                                                 
-                                                <Card>Độ hiếm: {stars[nft.metadata.quality-1]} </Card>
-                                                Sinh lực:<Progress percent={nft.metadata.blood/nft.metadata.blood*100}  strokeColor="red"/>
-                                                <BugOutlined /> Thế hệ Gen thứ: {nft.metadata.generation} <br/>
-                                                <GroupOutlined /> Mã Gen: {nft.metadata.gen} <br/>
-                                                <ThunderboltFilled /> Sức mạnh: {nft.metadata.power} <br/>
-                                                <ThunderboltFilled /> Chí mạng: {nft.metadata.strike}% <br/>
-                                                Thể chất:<Progress percent={nft.metadata.physical/nft.metadata.physical*100}  strokeColor="CornflowerBlue"/>
+                                                <Card>Rarity: {stars[nft.metadata.quality-1]} </Card>
+                                                Health :<Progress percent={nft.metadata.blood/nft.metadata.blood*100}  strokeColor="red"/>
+                                                <img src={require('../assets/element0.png')} alt="Element" /> <br/>
+                                                <img src={element[nft.metadata.element]} style={{width:"20px"}} alt="Element" /> <br/>
+                                                <BugOutlined /> Gen Generation : {nft.metadata.generation} <br/>
+                                                <GroupOutlined /> Gene Code: {nft.metadata.gen} <br/>
+                                                <ThunderboltFilled /> Damage: {nft.metadata.power} <br/>
+                                                <ThunderboltFilled /> Critical  Damage: {nft.metadata.strike}% <br/>
+                                                Physical:<Progress percent={nft.metadata.physical/nft.metadata.physical*100}  strokeColor="CornflowerBlue"/>
                             
-                                                Đói: {Math.floor((new Date().getTime() - nft.metadata.time_born ) / 300000  - nft.metadata.feeding_times)>4 ? hungry[3]: hungry[Math.floor((new Date().getTime() - nft.metadata.time_born ) / 300000  - nft.metadata.feeding_times)]}
+                                                Hungry: {Math.floor((new Date().getTime() - nft.metadata.time_born ) / 28800000  - nft.metadata.feeding_times)>4 ? hungry[3]: hungry[Math.floor((new Date().getTime() - nft.metadata.time_born ) / 28800000  - nft.metadata.feeding_times)]}
                                                 <br/> <br/>
                 
-                                                Giống: {nft.metadata.sex ? "Đực": "Cái"} <br/> 
-                                                <Meta title={`${"ID: " + nft.token_id} (${nft.approved_account_ids[nearConfig.marketContractName] >= 0 ? "SALE" : "NOT SALE"})`} description={"Chủ nhân: " + nft.owner_id} />
+                                                Sex: {nft.metadata.sex ? "Male": "Female"} <br/> 
+                                                <Meta title={`${"ID: " + nft.token_id} (${nft.approved_account_ids[nearConfig.marketContractName] >= 0 ? "SALE" : "NOT SALE"})`} description={"Owner: " + nft.owner_id} />
                                                 </Card> 
                                         </Link>
 
@@ -369,7 +375,7 @@ function Profile() {
                                                 key={nft.token_id}
                                                 hoverable
                                                 style={{ width: 240, marginRight: 15, marginBottom: 15, flexWrap: "wrap" }}
-                                                cover={<img style={{height: 200, width: "100%", objectFit: "contain"}} alt="nft-cover" src={nearConfig.imgs[nft.metadata.quality]} />}
+                                                cover={<img style={{height: 200, width: "100%", objectFit: "contain"}} alt="nft-cover" src={nft.metadata.media} />}
                                                 actions={[
                                                     <SendOutlined onClick={() => handleTransferToken(nft)} key={"send"}/>,
                                                     <DollarCircleOutlined onClick={() => handleSaleToken(nft)} key={"sell"} />,
@@ -378,19 +384,20 @@ function Profile() {
                                             >
                                                 <div style={{ fontSize: '20px' }}> <CrownFilled /> Level: {Math.floor(Math.log2(nft.metadata.exp/50)) < 0 ? 0 : Math.floor(Math.log2(nft.metadata.exp/50)) +1 } </div>
                                                 
-                                                <Card>Độ hiếm: {stars[nft.metadata.quality-1]} </Card>
-                                                Sinh lực:<Progress percent={nft.metadata.blood/nft.metadata.blood*100}  strokeColor="red"/>
-                                                <BugOutlined /> Thế hệ Gen thứ: {nft.metadata.generation} <br/>
-                                                <GroupOutlined /> Mã Gen: {nft.metadata.gen} <br/>
-                                                <ThunderboltFilled /> Sức mạnh: {nft.metadata.power} <br/>
-                                                <ThunderboltFilled /> Chí mạng: {nft.metadata.strike}% <br/>
-                                                Thể chất:<Progress percent={nft.metadata.physical/nft.metadata.physical*100}  strokeColor="CornflowerBlue"/>
+                                                <Card>Rarity: {stars[nft.metadata.quality-1]} </Card>
+                                                Health :<Progress percent={nft.metadata.blood/nft.metadata.blood*100}  strokeColor="red"/>
+                                                <img src={element[nft.metadata.element]} style={{width:"20px"}} alt="Element" /> <br/>
+                                                <BugOutlined /> Gen Generation : {nft.metadata.generation} <br/>
+                                                <GroupOutlined /> Gene Code: {nft.metadata.gen} <br/>
+                                                <ThunderboltFilled /> Damage: {nft.metadata.power} <br/>
+                                                <ThunderboltFilled /> Critical  Damage: {nft.metadata.strike}% <br/>
+                                                Physical:<Progress percent={nft.metadata.physical/nft.metadata.physical*100}  strokeColor="CornflowerBlue"/>
                             
-                                                Đói: {Math.floor((new Date().getTime() - nft.metadata.time_born ) / 300000  - nft.metadata.feeding_times)>4 ? hungry[3]: hungry[Math.floor((new Date().getTime() - nft.metadata.time_born ) / 300000  - nft.metadata.feeding_times)]}
+                                                Hungry: {Math.floor((new Date().getTime() - nft.metadata.time_born ) / 28800000  - nft.metadata.feeding_times)>4 ? hungry[3]: hungry[Math.floor((new Date().getTime() - nft.metadata.time_born ) / 28800000  - nft.metadata.feeding_times)]}
                                                 <br/> <br/>
                 
-                                                Giống: {nft.metadata.sex ? "Đực": "Cái"} <br/> 
-                                                <Meta title={`${"ID: " + nft.token_id} (${nft.approved_account_ids[nearConfig.marketContractName] >= 0 ? "SALE" : "NOT SALE"})`} description={"Chủ nhân: " + nft.owner_id} />
+                                                Sex: {nft.metadata.sex ? "Male": "Female"} <br/> 
+                                                <Meta title={`${"ID: " + nft.token_id} (${nft.approved_account_ids[nearConfig.marketContractName] >= 0 ? "SALE" : "NOT SALE"})`} description={"Owner: " + nft.owner_id} />
                                             </Card>
                                         </Link>
                                     )
@@ -414,7 +421,7 @@ function Profile() {
                         nfts.map((nft) => {
                             if (nft.metadata.sex == "0") {
                                 // check xem dragon die
-                                if (Math.floor((new Date().getTime() - nft.metadata.time_born ) / 300000  - nft.metadata.feeding_times) > 4) {
+                                if (Math.floor((new Date().getTime() - nft.metadata.time_born ) / 28800000  - nft.metadata.feeding_times) > 4) {
                                     return (
                                         <Link to={"/detail/"+nft.token_id}>
                                             <Card
@@ -431,19 +438,20 @@ function Profile() {
                                                 <div style={{ fontSize: '30px', textDecorationLine: 'underline' }} >Death</div> <br/>
                                                 <div style={{ fontSize: '20px' }}> <CrownFilled /> Level: {Math.floor(Math.log2(nft.metadata.exp/50)) < 0 ? 0 : Math.floor(Math.log2(nft.metadata.exp/50)) +1 } </div>
                                                 
-                                                <Card>Độ hiếm: {stars[nft.metadata.quality-1]} </Card>
-                                                Sinh lực:<Progress percent={nft.metadata.blood/nft.metadata.blood*100}  strokeColor="red"/>
-                                                <BugOutlined /> Thế hệ Gen thứ: {nft.metadata.generation} <br/>
-                                                <GroupOutlined /> Mã Gen: {nft.metadata.gen} <br/>
-                                                <ThunderboltFilled /> Sức mạnh: {nft.metadata.power} <br/>
-                                                <ThunderboltFilled /> Chí mạng: {nft.metadata.strike}% <br/>
-                                                Thể chất:<Progress percent={nft.metadata.physical/nft.metadata.physical*100}  strokeColor="CornflowerBlue"/>
+                                                <Card>Rarity: {stars[nft.metadata.quality-1]} </Card>
+                                                Health :<Progress percent={nft.metadata.blood/nft.metadata.blood*100}  strokeColor="red"/>
+                                                <img src={element[nft.metadata.element]} style={{width:"20px"}} alt="Element" /> <br/>
+                                                <BugOutlined /> Gen Generation : {nft.metadata.generation} <br/>
+                                                <GroupOutlined /> Gene Code: {nft.metadata.gen} <br/>
+                                                <ThunderboltFilled /> Damage: {nft.metadata.power} <br/>
+                                                <ThunderboltFilled /> Critical  Damage: {nft.metadata.strike}% <br/>
+                                                Physical:<Progress percent={nft.metadata.physical/nft.metadata.physical*100}  strokeColor="CornflowerBlue"/>
                             
-                                                Đói: {Math.floor((new Date().getTime() - nft.metadata.time_born ) / 300000  - nft.metadata.feeding_times)>4 ? hungry[3]: hungry[Math.floor((new Date().getTime() - nft.metadata.time_born ) / 300000  - nft.metadata.feeding_times)]}
+                                                Hungry: {Math.floor((new Date().getTime() - nft.metadata.time_born ) / 28800000  - nft.metadata.feeding_times)>4 ? hungry[3]: hungry[Math.floor((new Date().getTime() - nft.metadata.time_born ) / 28800000  - nft.metadata.feeding_times)]}
                                                 <br/> <br/>
                 
-                                                Giống: {nft.metadata.sex ? "Đực": "Cái"} <br/> 
-                                                <Meta title={`${"ID: " + nft.token_id} (${nft.approved_account_ids[nearConfig.marketContractName] >= 0 ? "SALE" : "NOT SALE"})`} description={"Chủ nhân: " + nft.owner_id} />
+                                                Sex: {nft.metadata.sex ? "Male": "Female"} <br/> 
+                                                <Meta title={`${"ID: " + nft.token_id} (${nft.approved_account_ids[nearConfig.marketContractName] >= 0 ? "SALE" : "NOT SALE"})`} description={"Owner: " + nft.owner_id} />
                                                 </Card> 
                                         </Link>
 
@@ -455,7 +463,7 @@ function Profile() {
                                                 key={nft.token_id}
                                                 hoverable
                                                 style={{ width: 240, marginRight: 15, marginBottom: 15, flexWrap: "wrap" }}
-                                                cover={<img style={{height: 200, width: "100%", objectFit: "contain"}} alt="nft-cover" src={nearConfig.imgs[nft.metadata.quality]} />}
+                                                cover={<img style={{height: 200, width: "100%", objectFit: "contain"}} alt="nft-cover" src={nft.metadata.media} />}
                                                 actions={[
                                                     <SendOutlined onClick={() => handleTransferToken(nft)} key={"send"}/>,
                                                     <DollarCircleOutlined onClick={() => handleSaleToken(nft)} key={"sell"} />,
@@ -464,19 +472,20 @@ function Profile() {
                                             >
                                                 <div style={{ fontSize: '20px' }}> <CrownFilled /> Level: {Math.floor(Math.log2(nft.metadata.exp/50)) < 0 ? 0 : Math.floor(Math.log2(nft.metadata.exp/50)) +1 } </div>
                                                 
-                                                <Card>Độ hiếm: {stars[nft.metadata.quality-1]} </Card>
-                                                Sinh lực:<Progress percent={nft.metadata.blood/nft.metadata.blood*100}  strokeColor="red"/>
-                                                <BugOutlined /> Thế hệ Gen thứ: {nft.metadata.generation} <br/>
-                                                <GroupOutlined /> Mã Gen: {nft.metadata.gen} <br/>
-                                                <ThunderboltFilled /> Sức mạnh: {nft.metadata.power} <br/>
-                                                <ThunderboltFilled /> Chí mạng: {nft.metadata.strike}% <br/>
-                                                Thể chất:<Progress percent={nft.metadata.physical/nft.metadata.physical*100}  strokeColor="CornflowerBlue"/>
+                                                <Card>Rarity: {stars[nft.metadata.quality-1]} </Card>
+                                                Health :<Progress percent={nft.metadata.blood/nft.metadata.blood*100}  strokeColor="red"/>
+                                                <img src={element[nft.metadata.element]} style={{width:"20px"}} alt="Element" /> <br/>
+                                                <BugOutlined /> Gen Generation : {nft.metadata.generation} <br/>
+                                                <GroupOutlined /> Gene Code: {nft.metadata.gen} <br/>
+                                                <ThunderboltFilled /> Damage: {nft.metadata.power} <br/>
+                                                <ThunderboltFilled /> Critical  Damage: {nft.metadata.strike}% <br/>
+                                                Physical:<Progress percent={nft.metadata.physical/nft.metadata.physical*100}  strokeColor="CornflowerBlue"/>
                             
-                                                Đói: {Math.floor((new Date().getTime() - nft.metadata.time_born ) / 300000  - nft.metadata.feeding_times)>4 ? hungry[3]: hungry[Math.floor((new Date().getTime() - nft.metadata.time_born ) / 300000  - nft.metadata.feeding_times)]}
+                                                Hungry: {Math.floor((new Date().getTime() - nft.metadata.time_born ) / 28800000  - nft.metadata.feeding_times)>4 ? hungry[3]: hungry[Math.floor((new Date().getTime() - nft.metadata.time_born ) / 28800000  - nft.metadata.feeding_times)]}
                                                 <br/> <br/>
                 
-                                                Giống: {nft.metadata.sex ? "Đực": "Cái"} <br/> 
-                                                <Meta title={`${"ID: " + nft.token_id} (${nft.approved_account_ids[nearConfig.marketContractName] >= 0 ? "SALE" : "NOT SALE"})`} description={"Chủ nhân: " + nft.owner_id} />
+                                                Sex: {nft.metadata.sex ? "Male": "Female"} <br/> 
+                                                <Meta title={`${"ID: " + nft.token_id} (${nft.approved_account_ids[nearConfig.marketContractName] >= 0 ? "SALE" : "NOT SALE"})`} description={"Owner: " + nft.owner_id} />
                                             </Card>
                                         </Link>
                                     )

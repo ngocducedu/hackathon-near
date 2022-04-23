@@ -1,0 +1,10 @@
+E:\Khoa hoc BLockchain\RustLearning\rust-blockchain\nft-marketplace-tutorial-3.FT-payout\nft-contract\target\wasm32-unknown-unknown\release\deps\ppv_lite86-859ce89e2dfa3e61.rmeta: C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.16\src\lib.rs C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.16\src\soft.rs C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.16\src\types.rs C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.16\src\generic.rs
+
+E:\Khoa hoc BLockchain\RustLearning\rust-blockchain\nft-marketplace-tutorial-3.FT-payout\nft-contract\target\wasm32-unknown-unknown\release\deps\libppv_lite86-859ce89e2dfa3e61.rlib: C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.16\src\lib.rs C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.16\src\soft.rs C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.16\src\types.rs C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.16\src\generic.rs
+
+E:\Khoa hoc BLockchain\RustLearning\rust-blockchain\nft-marketplace-tutorial-3.FT-payout\nft-contract\target\wasm32-unknown-unknown\release\deps\ppv_lite86-859ce89e2dfa3e61.d: C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.16\src\lib.rs C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.16\src\soft.rs C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.16\src\types.rs C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.16\src\generic.rs
+
+C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.16\src\lib.rs:
+C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.16\src\soft.rs:
+C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.16\src\types.rs:
+C:\Users\ohmyg\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.16\src\generic.rs:

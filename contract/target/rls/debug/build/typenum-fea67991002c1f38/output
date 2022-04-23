@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=e:\Khoa hoc BLockchain\RustLearning\rust-blockchain\nft-marketplace-tutorial-3.FT-payout\nft-contract\target\rls\debug\build\typenum-fea67991002c1f38\out\consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=e:\Khoa hoc BLockchain\RustLearning\rust-blockchain\nft-marketplace-tutorial-3.FT-payout\nft-contract\target\rls\debug\build\typenum-fea67991002c1f38\out\op.rs
